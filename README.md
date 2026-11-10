@@ -23,7 +23,7 @@ The project follows a structured data science workflow, beginning with dataset v
 
 Rather than relying exclusively on classification accuracy, the framework emphasizes data quality, statistical relationships, feature redundancy, model reliability and the interpretation of predictive outcomes.
 
-The ultimate objective is to develop a reproducible and interpretable classification pipeline supported by rigorous analytical methodology.
+The objective is to develop a reproducible and interpretable classification pipeline supported by rigorous analytical methodology.
 
 > **Research Disclaimer:** This project is intended for educational and research purposes. It is not a clinically validated diagnostic system and must not be used as a substitute for professional medical evaluation.
 
@@ -103,7 +103,7 @@ The validation process includes:
 - Data type inspection.
 - Predictor and target structure validation.
 
-**Validation Results**
+### Validation Results
 
 | Integrity Check | Result |
 |---|---|
@@ -154,8 +154,6 @@ The differences in concavity and concave points are particularly notable, sugges
 
 Spearman correlation analysis identified substantial relationships between several diagnostic predictors.
 
-Selected observations:
-
 | Feature Pair | Spearman Correlation |
 |---|---:|
 | radius_mean – area_mean | 0.9996 |
@@ -165,9 +163,7 @@ Selected observations:
 | radius_worst – perimeter_worst | 0.9935 |
 | perimeter_worst – area_worst | 0.9924 |
 
-These relationships indicate considerable redundancy among certain geometric measurements.
-
-This will be considered during feature selection and model development.
+These relationships indicate considerable redundancy among certain geometric measurements. This will be considered during feature selection and model development.
 
 **Outlier Investigation**
 
@@ -175,7 +171,41 @@ Potential outliers were identified using the IQR method.
 
 The investigation revealed that `area_se` had the highest flagged observation count, followed by `radius_se` and `perimeter_se`.
 
-Importantly, statistical outliers are not automatically treated as erroneous observations. Their influence will be assessed during subsequent preprocessing and model evaluation.
+Statistical outliers are not automatically treated as erroneous observations. Their influence will be assessed during subsequent preprocessing and model evaluation.
+
+### EDA Visualization Gallery
+
+The following visualizations are generated from the validated WDBC dataset.
+
+**01. Diagnostic Class Distribution**
+
+![Diagnostic Class Distribution](outputs/eda/class_distribution.png)
+
+Distribution of benign and malignant observations across the dataset.
+
+**02. Diagnostic Feature Comparison**
+
+![Diagnostic Feature Comparison](outputs/eda/feature_comparison.png)
+
+Boxplot comparison of six selected morphological measurements across diagnostic classes.
+
+**03. Feature Correlation Analysis**
+
+![Spearman Correlation Heatmap](outputs/eda/correlation_heatmap.png)
+
+Spearman correlation matrix illustrating relationships and potential redundancy among the 30 diagnostic predictors.
+
+**04. Feature Association with Diagnosis**
+
+![Feature Association](outputs/eda/feature_association.png)
+
+Top 15 diagnostic predictors ranked by absolute Spearman correlation with the binary target.
+
+**05. Outlier Investigation**
+
+![Outlier Analysis](outputs/eda/outlier_analysis.png)
+
+IQR-based screening of potential outliers across numerical diagnostic features.
 
 ## 06. Project Architecture
 
@@ -183,26 +213,31 @@ Importantly, statistical outliers are not automatically treated as erroneous obs
 Breast-Cancer-Detection-ML/
 │
 ├── app/
-│   └──                    # Interactive application
+│   └──                 # Interactive application
 │
 ├── data/
 │   ├── raw/
-│   │   └── wdbc.csv       # Original dataset
+│   │   └── wdbc.csv
 │   │
 │   └── processed/
 │       └── wdbc_cleaned.csv
 │
 ├── models/
-│                          # Trained model artifacts
+│                         # Trained model artifacts
 │
 ├── notebooks/
 │   └── 01_data_exploration.ipynb
 │
 ├── outputs/
-│                          # Generated visualizations
+│   └── eda/
+│       ├── class_distribution.png
+│       ├── correlation_heatmap.png
+│       ├── feature_association.png
+│       ├── feature_comparison.png
+│       └── outlier_analysis.png
 │
 ├── reports/
-│                          # Analytical reports
+│                         # Analytical reports
 │
 ├── src/
 │   └── validate_data.py
@@ -232,4 +267,56 @@ Breast-Cancer-Detection-ML/
 | Phase | Development Activity | Status |
 |---|---|---|
 | 01 | Environment and project setup | Completed |
-| 02 | Dataset acquisition
+| 02 | Dataset acquisition and validation | Completed |
+| 03 | Exploratory data analysis | Completed |
+| 04 | Statistical investigation and outlier screening | Completed |
+| 05 | Feature engineering and preprocessing | Planned |
+| 06 | Model development and experimentation | Planned |
+| 07 | Model evaluation and comparison | Planned |
+| 08 | Explainable AI and model interpretation | Planned |
+| 09 | Interactive application development | Planned |
+| 10 | Deployment and final documentation | Planned |
+
+## 09. Model Evaluation Strategy
+
+Model development will consider multiple evaluation metrics to assess classification performance.
+
+Planned evaluation metrics include:
+
+- Accuracy
+- Precision
+- Recall (Sensitivity)
+- Specificity
+- F1-score
+- Confusion Matrix
+- ROC-AUC
+
+Particular attention will be given to false-negative predictions because incorrectly classifying a malignant observation as benign is a critical error in this research context.
+
+No model performance metrics are reported until model training and evaluation have been completed.
+
+## 10. Explainable AI
+
+Model interpretability will be investigated to understand how diagnostic measurements influence predictions.
+
+Planned techniques include:
+
+- Feature importance analysis.
+- SHAP-based feature contribution analysis.
+- Local prediction explanations.
+- Global model interpretation.
+
+These techniques will help examine the contribution of individual predictors and improve transparency in model behavior.
+
+## 11. Installation and Setup
+
+### Prerequisites
+
+- Python 3.10
+- Git
+- Visual Studio Code (recommended)
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/nidhi-y
