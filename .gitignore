@@ -17,8 +17,7 @@ data/processed/*
 models/*.pkl
 models/*.joblib
 
-# Outputs
-outputs/
+
 
 # Environment variables
 .env
