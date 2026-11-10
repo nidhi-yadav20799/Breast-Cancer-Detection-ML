@@ -1,113 +1,208 @@
-#  Breast Cancer Detection & Diagnostic Intelligence
+# Breast Cancer Detection & Diagnostic Intelligence
 
 ### An Explainable Machine Learning Framework for Breast Cancer Classification
 
-<p align="center">
-  <strong>End-to-end Machine Learning | Statistical Analysis | Predictive Modeling | Explainable AI</strong>
-</p>
+**Statistical Analysis | Predictive Modeling | Feature Engineering | Explainable AI**
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3.10-blue?logo=python" />
-  <img src="https://img.shields.io/badge/Scikit--Learn-ML-orange?logo=scikitlearn" />
-  <img src="https://img.shields.io/badge/Pandas-Data%20Analysis-150458?logo=pandas" />
-  <img src="https://img.shields.io/badge/Streamlit-Interactive%20App-FF4B4B?logo=streamlit" />
+  <img src="https://img.shields.io/badge/Python-3.10-3776AB?logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Pandas-Data%20Analysis-150458?logo=pandas&logoColor=white" />
+  <img src="https://img.shields.io/badge/Scikit--Learn-Machine%20Learning-F7931E?logo=scikitlearn&logoColor=white" />
+  <img src="https://img.shields.io/badge/NumPy-Scientific%20Computing-013243?logo=numpy&logoColor=white" />
+  <img src="https://img.shields.io/badge/Jupyter-Notebook-F37626?logo=jupyter&logoColor=white" />
   <img src="https://img.shields.io/badge/Status-In%20Development-yellow" />
-  <img src="https://img.shields.io/badge/License-MIT-green" />
 </p>
 
 ---
 
-##  Project Overview
+## 01. Project Overview
 
-Breast Cancer Detection & Diagnostic Intelligence is an end-to-end machine learning project designed to investigate diagnostic measurements and develop predictive models for classifying breast tumors as **Benign (B)** or **Malignant (M)**.
+Breast Cancer Detection & Diagnostic Intelligence is a machine learning project focused on investigating diagnostic measurements and developing predictive models to distinguish between benign and malignant breast tumors.
 
-The project combines statistical investigation, exploratory data analysis, feature engineering, machine learning experimentation, model evaluation and explainability into a structured analytical pipeline.
+The project follows a structured data science workflow, beginning with dataset validation and statistical investigation, followed by exploratory data analysis, feature engineering, predictive modeling and model interpretability.
 
-The primary objective is to build a reproducible and interpretable classification framework that demonstrates how machine learning can support research into breast cancer diagnostic patterns.
+Rather than relying exclusively on classification accuracy, the framework emphasizes data quality, statistical relationships, feature redundancy, model reliability and the interpretation of predictive outcomes.
 
-> **Important:** This is an educational and research project, not a clinically validated diagnostic system. Predictions must not replace professional medical assessment.
+The ultimate objective is to develop a reproducible and interpretable classification pipeline supported by rigorous analytical methodology.
 
-##  Project Objectives
+> **Research Disclaimer:** This project is intended for educational and research purposes. It is not a clinically validated diagnostic system and must not be used as a substitute for professional medical evaluation.
 
-- Investigate diagnostic feature distributions and statistical patterns.
-- Identify relationships and multicollinearity among predictors.
-- Examine outliers without automatically discarding potentially meaningful observations.
-- Engineer and select relevant predictive features.
-- Develop and compare multiple classification algorithms.
-- Evaluate models using clinically relevant classification metrics.
-- Interpret model predictions using explainable AI techniques.
-- Develop an interactive application for exploring model predictions.
+## 02. Project Objectives
 
-##  Dataset Overview
+- Establish a reproducible data validation pipeline.
+- Investigate diagnostic feature distributions and statistical characteristics.
+- Quantify differences between benign and malignant observations.
+- Identify multicollinearity and redundant predictors.
+- Investigate statistical outliers without automatically removing potentially meaningful observations.
+- Develop meaningful feature representations and selection strategies.
+- Experiment with multiple machine learning classification algorithms.
+- Evaluate predictive performance using appropriate classification metrics.
+- Apply explainability techniques to understand model decisions.
+- Develop an interactive interface for model inference.
+
+## 03. Dataset Overview
 
 **Dataset:** Wisconsin Diagnostic Breast Cancer (WDBC)
 
-| Dataset Attribute | Description |
-|---|---|
+The dataset contains measurements computed from digitized images of fine needle aspirates (FNA) of breast masses.
+
+| Dataset Attribute | Value |
+|---|---:|
 | Total observations | 569 |
 | Predictor variables | 30 |
 | Target variable | Diagnosis |
-| Target classes | Benign (B), Malignant (M) |
+| Diagnostic classes | 2 |
+| Benign observations | 357 |
+| Malignant observations | 212 |
 | Missing values | 0 |
 | Duplicate observations | 0 |
 | Duplicate identifiers | 0 |
 
-### Target Distribution
+### Diagnostic Class Distribution
 
-| Diagnosis | Observations | Percentage |
+| Diagnosis | Count | Percentage |
 |---|---:|---:|
-| Benign | 357 | 62.74% |
-| Malignant | 212 | 37.26% |
+| Benign (B) | 357 | 62.74% |
+| Malignant (M) | 212 | 37.26% |
 
-### Feature Categories
+### Feature Structure
 
-The 30 numerical predictors describe cell nuclei characteristics across three measurement groups:
+The 30 numerical predictors are organized into three measurement categories:
 
-- **Mean Features:** Average characteristics of cell nuclei.
-- **Standard Error Features:** Variability in the measurements.
-- **Worst Features:** Largest or most extreme measurements.
+| Category | Description |
+|---|---|
+| Mean | Average characteristics of cell nuclei |
+| Standard Error | Measurement variability |
+| Worst | Largest or most extreme measurements |
 
-Features include radius, texture, perimeter, area, smoothness, compactness, concavity, concave points, symmetry and fractal dimension.
+The measurements cover:
 
-##  Exploratory Data Analysis
+- Radius
+- Texture
+- Perimeter
+- Area
+- Smoothness
+- Compactness
+- Concavity
+- Concave points
+- Symmetry
+- Fractal dimension
 
-The initial investigation includes:
+## 04. Data Integrity & Validation
 
-- Dataset integrity and structural validation.
-- Descriptive statistical analysis.
-- Target class distribution.
-- Feature distribution analysis.
-- Benign vs. malignant comparison.
-- Spearman correlation analysis.
-- Multicollinearity investigation.
-- Outlier detection using the IQR method.
+Before statistical investigation, the dataset undergoes structural and integrity checks.
+
+The validation process includes:
+
+- Dataset dimensionality verification.
+- Removal of completely empty columns.
+- Missing-value assessment.
+- Duplicate observation detection.
+- Duplicate identifier detection.
+- Target class verification.
+- Data type inspection.
+- Predictor and target structure validation.
+
+**Validation Results**
+
+| Integrity Check | Result |
+|---|---|
+| Observations | 569 |
+| Predictors | 30 |
+| Missing values | 0 |
+| Duplicate rows | 0 |
+| Duplicate identifiers | 0 |
+| Dataset validation | PASSED |
+
+The original dataset contained one completely empty column (`Unnamed: 32`), which was removed during cleaning.
+
+The validated dataset was saved separately to preserve the distinction between raw and processed data.
+
+## 05. Exploratory Data Analysis
+
+Exploratory analysis investigates the statistical characteristics of diagnostic measurements and their relationships with the target variable.
+
+### Analysis Performed
+
+1. Dataset structure and descriptive statistics.
+2. Diagnostic class distribution.
+3. Feature distribution analysis.
+4. Benign versus malignant comparison.
+5. Spearman rank correlation analysis.
+6. Multicollinearity investigation.
+7. Inter-feature correlation ranking.
+8. Outlier detection using the Interquartile Range (IQR) method.
 
 ### Key Analytical Findings
 
-- Malignant observations exhibit higher average radius, perimeter and area measurements.
-- Concavity and concave points show substantial differences between diagnostic classes.
-- Several geometric measurements demonstrate strong inter-feature correlations.
-- Area-related standard error measurements exhibit comparatively high outlier frequency.
+**Diagnostic Feature Separation**
 
-##  Project Architecture
+Malignant observations exhibit higher average measurements across several geometric features.
+
+| Feature | Benign Mean | Malignant Mean |
+|---|---:|---:|
+| Radius Mean | 12.1465 | 17.4628 |
+| Texture Mean | 17.9148 | 21.6049 |
+| Perimeter Mean | 78.0754 | 115.3654 |
+| Area Mean | 462.7902 | 978.3764 |
+| Concavity Mean | 0.0461 | 0.1608 |
+| Concave Points Mean | 0.0257 | 0.0880 |
+
+The differences in concavity and concave points are particularly notable, suggesting that these measurements may contain useful discriminatory information.
+
+**Correlation Investigation**
+
+Spearman correlation analysis identified substantial relationships between several diagnostic predictors.
+
+Selected observations:
+
+| Feature Pair | Spearman Correlation |
+|---|---:|
+| radius_mean – area_mean | 0.9996 |
+| radius_worst – area_worst | 0.9989 |
+| radius_mean – perimeter_mean | 0.9978 |
+| perimeter_mean – area_mean | 0.9971 |
+| radius_worst – perimeter_worst | 0.9935 |
+| perimeter_worst – area_worst | 0.9924 |
+
+These relationships indicate considerable redundancy among certain geometric measurements.
+
+This will be considered during feature selection and model development.
+
+**Outlier Investigation**
+
+Potential outliers were identified using the IQR method.
+
+The investigation revealed that `area_se` had the highest flagged observation count, followed by `radius_se` and `perimeter_se`.
+
+Importantly, statistical outliers are not automatically treated as erroneous observations. Their influence will be assessed during subsequent preprocessing and model evaluation.
+
+## 06. Project Architecture
 
 ```text
 Breast-Cancer-Detection-ML/
 │
-├── app/                    # Interactive application
+├── app/
+│   └──                    # Interactive application
 │
 ├── data/
-│   ├── raw/                # Original dataset
-│   └── processed/          # Validated and cleaned data
+│   ├── raw/
+│   │   └── wdbc.csv       # Original dataset
+│   │
+│   └── processed/
+│       └── wdbc_cleaned.csv
 │
-├── models/                 # Trained model artifacts
+├── models/
+│                          # Trained model artifacts
 │
 ├── notebooks/
 │   └── 01_data_exploration.ipynb
 │
-├── outputs/                # Generated visualizations
+├── outputs/
+│                          # Generated visualizations
 │
-├── reports/                # Analytical reports
+├── reports/
+│                          # Analytical reports
 │
 ├── src/
 │   └── validate_data.py
@@ -117,118 +212,24 @@ Breast-Cancer-Detection-ML/
 └── README.md
 ```
 
-##  Technology Stack
+## 07. Technology Stack
 
-| Category | Technologies |
+| Area | Technologies |
 |---|---|
-| Programming | Python |
+| Programming | Python 3.10 |
 | Data Manipulation | Pandas, NumPy |
-| Visualization | Matplotlib, Seaborn |
 | Statistical Analysis | SciPy |
+| Data Visualization | Matplotlib, Seaborn |
 | Machine Learning | Scikit-learn |
 | Model Persistence | Joblib |
-| Interactive Development | Jupyter Notebook |
-| Application | Streamlit |
-| Development Environment | VS Code, Git, GitHub |
+| Interactive Analysis | Jupyter Notebook |
+| Application Development | Streamlit |
+| Development Environment | VS Code |
+| Version Control | Git, GitHub |
 
-##  Machine Learning Roadmap
+## 08. Machine Learning Development Roadmap
 
-| Phase | Description | Status |
+| Phase | Development Activity | Status |
 |---|---|---|
-| 01 | Environment & project setup | Completed |
-| 02 | Dataset validation | Completed |
-| 03 | Exploratory data analysis | Completed |
-| 04 | Statistical & correlation analysis | Completed |
-| 05 | Outlier investigation | Completed |
-| 06 | Feature engineering & selection | Planned |
-| 07 | Model development & comparison | Planned |
-| 08 | Model evaluation & optimization | Planned |
-| 09 | Explainable AI (SHAP) | Planned |
-| 10 | Interactive Streamlit application | Planned |
-| 11 | Deployment & documentation | Planned |
-
-##  Model Evaluation Strategy
-
-Models will be evaluated using multiple performance metrics rather than accuracy alone.
-
-- Accuracy
-- Precision
-- Recall / Sensitivity
-- Specificity
-- F1-Score
-- ROC-AUC
-- Confusion Matrix
-- Cross-validation performance
-
-Special attention will be given to false-negative predictions because incorrectly classifying a malignant observation as benign is an important risk to investigate.
-
-##  Explainable AI
-
-The project will incorporate model interpretability techniques to investigate:
-
-- Global feature importance.
-- Individual prediction explanations.
-- SHAP feature contributions.
-- Relationships between diagnostic measurements and model outputs.
-
-## Installation & Setup
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/nidhi-yadav20799/Breast-Cancer-Detection-ML.git
-
-cd Breast-Cancer-Detection-ML
-```
-
-### 2. Create a virtual environment
-
-```bash
-python -m venv .venv
-```
-
-### 3. Activate the environment
-
-**Windows PowerShell**
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
-
-### 4. Install dependencies
-
-```bash
-python -m pip install -r requirements.txt
-```
-
-### 5. Start Jupyter Notebook
-
-```bash
-jupyter notebook
-```
-
-##  Current Development Status
-
-The project has successfully completed its initial data validation and exploratory investigation stages.
-
-The validated dataset contains 569 observations and 30 predictor variables, with no missing values or duplicate observations.
-
-The next development milestone focuses on feature engineering, model experimentation and rigorous classification evaluation.
-
-##  Author
-
-**Nidhi Yadav**
-
-Data Science Graduate | Machine Learning & AI Enthusiast
-
-- GitHub: [@nidhi-yadav20799](https://github.com/nidhi-yadav20799)
-
----
-
-<p align="center">
-  <strong>Built with Python, Statistical Thinking & Machine Learning.</strong>
-</p>
-
-<p align="center">
-  ⭐ If you find this project interesting, consider starring the repository.
-</p>
+| 01 | Environment and project setup | Completed |
+| 02 | Dataset acquisition
