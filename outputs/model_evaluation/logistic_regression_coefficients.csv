@@ -1,0 +1,31 @@
+Rank,Feature,Coefficient,Absolute_Coefficient,Odds_Ratio,Direction
+1,radius_se,2.6678818518657055,2.6678818518657055,14.409415568971898,Increases estimated malignancy odds
+2,area_worst,2.0848530848064866,2.0848530848064866,8.043409695796699,Increases estimated malignancy odds
+3,texture_worst,2.0751307371364573,2.0751307371364573,7.96558778910078,Increases estimated malignancy odds
+4,concave points_mean,1.9196362236478772,1.9196362236478772,6.818477617165836,Increases estimated malignancy odds
+5,radius_worst,1.6244577178909263,1.6244577178909263,5.075665847963935,Increases estimated malignancy odds
+6,concavity_worst,1.0995283764841899,1.0995283764841899,3.002749522658057,Increases estimated malignancy odds
+7,compactness_se,-1.0055209961793181,1.0055209961793181,0.3658539766182284,Decreases estimated malignancy odds
+8,texture_se,-0.6882876462682095,0.6882876462682095,0.5024356804890688,Decreases estimated malignancy odds
+9,symmetry_worst,0.659642418215187,0.659642418215187,1.9341006115869634,Increases estimated malignancy odds
+10,smoothness_se,0.32455266630114565,0.32455266630114565,1.3834116608893243,Increases estimated malignancy odds
+11,concave points_worst,0.30229601760449454,0.30229601760449454,1.3529616679096432,Increases estimated malignancy odds
+12,fractal_dimension_se,-0.27111733072346234,0.27111733072346234,0.7625270233088921,Decreases estimated malignancy odds
+13,smoothness_worst,0.2494011629057328,0.2494011629057328,1.28325672482182,Increases estimated malignancy odds
+14,concave points_se,0.20575071524246108,0.20575071524246108,1.2284469327267444,Increases estimated malignancy odds
+15,area_se,0.0,0.0,1.0,Zero coefficient (no linear contribution)
+16,perimeter_se,0.0,0.0,1.0,Zero coefficient (no linear contribution)
+17,symmetry_mean,0.0,0.0,1.0,Zero coefficient (no linear contribution)
+18,fractal_dimension_mean,0.0,0.0,1.0,Zero coefficient (no linear contribution)
+19,concavity_mean,0.0,0.0,1.0,Zero coefficient (no linear contribution)
+20,area_mean,0.0,0.0,1.0,Zero coefficient (no linear contribution)
+21,smoothness_mean,0.0,0.0,1.0,Zero coefficient (no linear contribution)
+22,compactness_mean,0.0,0.0,1.0,Zero coefficient (no linear contribution)
+23,texture_mean,0.0,0.0,1.0,Zero coefficient (no linear contribution)
+24,radius_mean,0.0,0.0,1.0,Zero coefficient (no linear contribution)
+25,perimeter_mean,0.0,0.0,1.0,Zero coefficient (no linear contribution)
+26,concavity_se,0.0,0.0,1.0,Zero coefficient (no linear contribution)
+27,symmetry_se,0.0,0.0,1.0,Zero coefficient (no linear contribution)
+28,perimeter_worst,0.0,0.0,1.0,Zero coefficient (no linear contribution)
+29,compactness_worst,0.0,0.0,1.0,Zero coefficient (no linear contribution)
+30,fractal_dimension_worst,0.0,0.0,1.0,Zero coefficient (no linear contribution)

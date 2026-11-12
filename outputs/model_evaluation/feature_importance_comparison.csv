@@ -1,0 +1,31 @@
+Overall_Rank,Feature,Coefficient,Absolute_Coefficient,Coefficient_Rank,Importance_Mean,Importance_Std,Permutation_Rank,Rank_Difference,Absolute_Rank_Difference,Importance_Consistency
+1,texture_worst,2.0751307371364573,2.0751307371364573,3,0.026080246913580248,0.007423792451908526,1,2,2,High ranking agreement
+2,concave points_mean,1.9196362236478772,1.9196362236478772,4,0.01612654320987653,0.005504857151328381,2,2,2,High ranking agreement
+3,radius_se,2.6678818518657055,2.6678818518657055,1,0.013855820105820071,0.0069503995210784915,3,-2,2,High ranking agreement
+4,area_worst,2.0848530848064866,2.0848530848064866,2,0.013326719576719548,0.005937757610453394,4,-2,2,High ranking agreement
+5,concavity_worst,1.0995283764841899,1.0995283764841899,6,0.009270282186948824,0.002553634341182403,5,1,1,High ranking agreement
+6,radius_worst,1.6244577178909263,1.6244577178909263,5,0.008697089947089924,0.004754818789671113,6,-1,1,High ranking agreement
+7,texture_se,-0.6882876462682095,0.6882876462682095,8,0.0040123456790123226,0.0018991451987902797,7,1,1,High ranking agreement
+8,symmetry_worst,0.659642418215187,0.659642418215187,9,0.002314814814814799,0.0012778991839673206,8,1,1,High ranking agreement
+9,compactness_se,-1.0055209961793181,1.0055209961793181,7,0.0011243386243386055,0.0021098471018454108,9,-2,2,High ranking agreement
+10,smoothness_worst,0.2494011629057328,0.2494011629057328,13,0.0006613756613756479,0.0005533465783955463,10,3,3,High ranking agreement
+11,concave points_worst,0.30229601760449454,0.30229601760449454,11,0.0006393298059964544,0.0007537619487336173,11,0,0,High ranking agreement
+12,area_se,0.0,0.0,15,0.0,0.0,12,3,3,High ranking agreement
+13,perimeter_se,0.0,0.0,15,0.0,0.0,12,3,3,High ranking agreement
+14,concavity_mean,0.0,0.0,15,0.0,0.0,12,3,3,High ranking agreement
+15,fractal_dimension_mean,0.0,0.0,15,0.0,0.0,12,3,3,High ranking agreement
+16,symmetry_mean,0.0,0.0,15,0.0,0.0,12,3,3,High ranking agreement
+17,perimeter_mean,0.0,0.0,15,0.0,0.0,12,3,3,High ranking agreement
+18,concavity_se,0.0,0.0,15,0.0,0.0,12,3,3,High ranking agreement
+19,symmetry_se,0.0,0.0,15,0.0,0.0,12,3,3,High ranking agreement
+20,area_mean,0.0,0.0,15,0.0,0.0,12,3,3,High ranking agreement
+21,smoothness_mean,0.0,0.0,15,0.0,0.0,12,3,3,High ranking agreement
+22,compactness_mean,0.0,0.0,15,0.0,0.0,12,3,3,High ranking agreement
+23,texture_mean,0.0,0.0,15,0.0,0.0,12,3,3,High ranking agreement
+24,radius_mean,0.0,0.0,15,0.0,0.0,12,3,3,High ranking agreement
+25,compactness_worst,0.0,0.0,15,0.0,0.0,12,3,3,High ranking agreement
+26,fractal_dimension_worst,0.0,0.0,15,0.0,0.0,12,3,3,High ranking agreement
+27,perimeter_worst,0.0,0.0,15,0.0,0.0,12,3,3,High ranking agreement
+28,smoothness_se,0.32455266630114565,0.32455266630114565,10,-2.2204460492503132e-17,0.0007825502358597505,28,-18,18,Large ranking difference
+29,concave points_se,0.20575071524246108,0.20575071524246108,14,-0.00011022927689595674,0.0005075337051685023,29,-15,15,Large ranking difference
+30,fractal_dimension_se,-0.27111733072346234,0.27111733072346234,12,-0.000363756613756631,0.0005937051591488221,30,-18,18,Large ranking difference
