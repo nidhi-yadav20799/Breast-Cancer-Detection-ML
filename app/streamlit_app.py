@@ -473,10 +473,15 @@ def validate_upload(uploaded):
             "Missing/non-numeric values in: " + ", ".join(bad)
         )
 
-    if not np.isfinite(X.to_numpy(dtype=float)).all():
+    numeric_values = X.to_numpy(dtype=float)
+    if not np.isfinite(numeric_values).all():
         raise ValueError("CSV contains infinite or non-finite values.")
+    if (numeric_values < 0).any():
+        raise ValueError("WDBC feature measurements must be non-negative.")
 
     ids = raw["id"].copy() if "id" in raw.columns else None
+    if ids is not None and ids.isna().any():
+        raise ValueError("The optional id column contains missing values.")
     y = (
         normalize_diagnosis(raw["diagnosis"])
         if "diagnosis" in raw.columns else None
@@ -1487,7 +1492,12 @@ elif page == "Model & methodology":
             language="text",
         )
 
-        st.markdown("### Independent holdout results")
+        st.markdown("### Existing holdout results")
+        st.warning(
+            "Exploratory estimate only: the current notebook used this holdout "
+            "split to compare tuned candidates and select the final model. "
+            "It is not a fully untouched final evaluation."
+        )
         holdout = pd.DataFrame({
             "Metric": list(HOLDOUT_METRICS.keys()),
             "Score": [f"{v:.4f}" for v in HOLDOUT_METRICS.values()],
