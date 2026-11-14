@@ -5,6 +5,10 @@
 **Statistical Analysis | Predictive Modeling | Feature Engineering | Explainable AI**
 
 <p align="center">
+  <img src="docs/assets/oncolens-cell-animation.gif" width="560" alt="Animated scientific visualization of a glowing microscopic cell cluster" />
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/Python-3.10-3776AB?logo=python&logoColor=white" />
   <img src="https://img.shields.io/badge/Pandas-Data%20Analysis-150458?logo=pandas&logoColor=white" />
   <img src="https://img.shields.io/badge/Scikit--Learn-Machine%20Learning-F7931E?logo=scikitlearn&logoColor=white" />
@@ -14,6 +18,18 @@
 </p>
 
 ---
+
+## Live Application
+
+<p align="center">
+  <a href="https://oncolens-breast-diagnostic.streamlit.app/">
+    <img src="https://img.shields.io/badge/Launch-ONCOLENS%20Live-FF4B4B?logo=streamlit&logoColor=white" alt="Launch ONCOLENS live application" />
+  </a>
+</p>
+
+**Live demo:** https://oncolens-breast-diagnostic.streamlit.app/
+
+Explore the interactive overview, single-sample analysis, batch laboratory, explainability and model methodology workspaces.
 
 ## 01. Project Overview
 
