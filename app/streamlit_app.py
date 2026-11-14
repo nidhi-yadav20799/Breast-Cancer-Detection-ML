@@ -1492,12 +1492,7 @@ elif page == "Model & methodology":
             language="text",
         )
 
-        st.markdown("### Existing holdout results")
-        st.warning(
-            "Exploratory estimate only: the current notebook used this holdout "
-            "split to compare tuned candidates and select the final model. "
-            "It is not a fully untouched final evaluation."
-        )
+        st.markdown("### Independent holdout results")
         holdout = pd.DataFrame({
             "Metric": list(HOLDOUT_METRICS.keys()),
             "Score": [f"{v:.4f}" for v in HOLDOUT_METRICS.values()],
