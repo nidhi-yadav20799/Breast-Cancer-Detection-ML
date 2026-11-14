@@ -311,6 +311,24 @@ The model-development notebook evaluates multiple classifiers using stratified c
 
 The selected Logistic Regression pipeline uses StandardScaler followed by Logistic Regression.
 
+### Cross-Validated Comparison of All Five Baseline Models
+
+The following mean scores were calculated using stratified five-fold cross-validation on the training partition. They are validation estimates, not holdout-test scores.
+
+| Model | Accuracy | Precision (Malignant) | Recall (Malignant) | F1-score | ROC-AUC |
+|---|---:|---:|---:|---:|---:|
+| Logistic Regression | 0.9736 | 0.9771 | 0.9529 | 0.9640 | 0.9958 |
+| Support Vector Machine (RBF) | 0.9714 | 0.9769 | 0.9471 | 0.9610 | 0.9949 |
+| Random Forest | 0.9604 | 0.9584 | 0.9353 | 0.9461 | 0.9880 |
+| K-Nearest Neighbors | 0.9648 | 0.9875 | 0.9176 | 0.9510 | 0.9871 |
+| Gaussian Naive Bayes | 0.9385 | 0.9247 | 0.9118 | 0.9170 | 0.9870 |
+
+Logistic Regression leads the baseline comparison on mean accuracy, malignant recall, F1-score and ROC-AUC. The tuned RBF-SVM has a marginally higher tuned ROC-AUC (0.9960 versus 0.9959), while tuned Logistic Regression has higher cross-validated precision (0.9822 versus 0.9775). Logistic Regression remains the saved model based on the combined comparison and its malignant-class sensitivity; this is not a claim of clinical superiority.
+
+### Class Distribution and Imbalance Handling
+
+The dataset contains 357 benign observations (62.74%) and 212 malignant observations (37.26%). This represents a moderate class imbalance. Stratified splitting and stratified five-fold cross-validation preserve class proportions. The Logistic Regression and RBF-SVM hyperparameter grids evaluated both class_weight=None and class_weight="balanced"; ROC-AUC-based tuning selected None for both. No synthetic observations were added, and the model comparison uses the original WDBC observations.
+
 ### Current Logistic Regression Results
 
 | Evaluation Metric | Score |
@@ -391,6 +409,23 @@ python src/validate_data.py
 ```bash
 streamlit run app/streamlit_app.py
 ```
+
+
+## 12. Assignment Demo Walkthrough
+
+The CODE-A-NOVA task requests a 2–3 minute demo video or Loom walkthrough. A recording is not stored in this repository. Use the accompanying [demo walkthrough script](docs/DEMO_WALKTHROUGH.md) to record the live application and notebook, then share the resulting video link with the recruitment team if they accept supplementary material.
+
+### Submission Checklist
+
+- [x] Public GitHub repository with source code, notebooks, .gitignore and commit history.
+- [x] WDBC dataset and documented data preparation workflow.
+- [x] EDA and model-development notebooks.
+- [x] README with setup, notebook and Streamlit run instructions, and results summary.
+- [x] PDF model report.
+- [x] Deployed Streamlit inference interface.
+- [ ] 2–3 minute demo video / Loom link — record separately and share with the recruitment team.
+- [ ] Google Colab link — applicable only if a Colab notebook was used for the submitted work.
+- [ ] Special setup notes — none beyond the installation steps above at the time of writing.
 
 ## Project Status
 
