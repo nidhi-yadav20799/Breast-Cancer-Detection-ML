@@ -307,7 +307,7 @@ Breast-Cancer-Detection-ML/
 
 ## 09. Model Evaluation Strategy
 
-The model-development notebook evaluates multiple classifiers using stratified cross-validation and tunes selected candidates using the training data.
+The model-development notebook evaluates five baseline classifiers using stratified cross-validation and tunes selected candidates using the training data. Its final training-only out-of-fold diagnostics section can generate confusion matrices and ROC curves for all five baseline models; run that cell to produce the files under outputs/model_evaluation/cross_validation/. The existing two-candidate holdout plots are explicitly labelled exploratory because the holdout comparison influenced model selection.
 
 The selected Logistic Regression pipeline uses StandardScaler followed by Logistic Regression.
 
