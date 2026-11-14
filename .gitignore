@@ -2,25 +2,26 @@
 __pycache__/
 *.py[cod]
 
-# Virtual environment
+# Virtual environments
 .venv/
 venv/
 
 # Jupyter
 .ipynb_checkpoints/
 
-# Data
+# Raw source data is not committed by default
 data/raw/*
-data/processed/*
+!data/raw/.gitkeep
 
-# Model files
+# Keep the processed dataset available to the application
+# (do not ignore data/processed/wdbc_cleaned.csv)
+
+# Local model exports; keep the committed production model tracked
 models/*.pkl
-models/*.joblib
 
-
-
-# Environment variables
+# Secrets and local configuration
 .env
+.streamlit/secrets.toml
 
 # IDE
 .vscode/
