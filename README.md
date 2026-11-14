@@ -31,6 +31,10 @@
 
 Explore the interactive overview, single-sample analysis, batch laboratory, explainability and model methodology workspaces.
 
+## Project Demo Video
+
+[Watch the ONCOLENS project walkthrough](ONCOLENS_Demo.mp4)
+
 ## Project Report
 
 <p align="center">
