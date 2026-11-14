@@ -411,22 +411,6 @@ streamlit run app/streamlit_app.py
 ```
 
 
-## 12. Assignment Demo Walkthrough
-
-The CODE-A-NOVA task requests a 2–3 minute demo video or Loom walkthrough. A recording is not stored in this repository. Use the accompanying [demo walkthrough script](docs/DEMO_WALKTHROUGH.md) to record the live application and notebook, then share the resulting video link with the recruitment team if they accept supplementary material.
-
-### Submission Checklist
-
-- [x] Public GitHub repository with source code, notebooks, .gitignore and commit history.
-- [x] WDBC dataset and documented data preparation workflow.
-- [x] EDA and model-development notebooks.
-- [x] README with setup, notebook and Streamlit run instructions, and results summary.
-- [x] PDF model report.
-- [x] Deployed Streamlit inference interface.
-- [ ] 2–3 minute demo video / Loom link — record separately and share with the recruitment team.
-- [ ] Google Colab link — applicable only if a Colab notebook was used for the submitted work.
-- [ ] Special setup notes — none beyond the installation steps above at the time of writing.
-
 ## Project Status
 
 Core dataset validation, exploratory analysis, model experimentation, saved model artifacts, feature-importance outputs and the Streamlit prototype are implemented.
