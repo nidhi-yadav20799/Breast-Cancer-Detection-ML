@@ -59,5 +59,8 @@
     "serialization_format": "Joblib",
     "sklearn_version": "1.7.2",
     "created_at_utc": "2026-11-12T09:09:28.219575+00:00",
-    "usage_note": "Research and educational use only. Not validated for clinical diagnosis."
+    "usage_note": "Research and educational use only. Not validated for clinical diagnosis.",
+    "evaluation_status": "exploratory_holdout_estimate",
+    "evaluation_caveat": "The holdout split was used to compare tuned candidate models and select the final Logistic Regression model. Reported holdout metrics are therefore exploratory and are not an untouched final generalisation estimate.",
+    "final_independent_evaluation_required": true
 }
