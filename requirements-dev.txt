@@ -1,0 +1,5 @@
+# Additional tools for notebooks, EDA and statistical analysis
+-r requirements.txt
+jupyter==1.1.1
+scipy==1.15.3
+seaborn==0.13.2
