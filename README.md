@@ -31,6 +31,20 @@
 
 Explore the interactive overview, single-sample analysis, batch laboratory, explainability and model methodology workspaces.
 
+## Project Report
+
+<p align="center">
+  <a href="ONCOLENS_Report_Cinematic_Microscopy.pdf">
+    <img src="https://img.shields.io/badge/Download-ONCOLENS%20Model%20Report-0B7285?style=for-the-badge&logo=adobeacrobatreader&logoColor=white" alt="Download ONCOLENS model report PDF" />
+  </a>
+</p>
+
+**Technical report:** [ONCOLENS Breast Cancer Detection & Diagnostic Intelligence — Model Report (PDF)](ONCOLENS_Report_Cinematic_Microscopy.pdf)
+
+The report summarizes the WDBC dataset, validation workflow, model-development methodology, recorded evaluation results and educational-use limitations.
+
+---
+
 ## 01. Project Overview
 
 Breast Cancer Detection & Diagnostic Intelligence is a machine learning project focused on investigating diagnostic measurements and developing predictive models to distinguish between benign and malignant breast tumors.
