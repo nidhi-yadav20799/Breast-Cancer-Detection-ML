@@ -1,322 +1,146 @@
-# Breast Cancer Detection & Diagnostic Intelligence
+# ONCOLENS — Breast Cancer Detection & Diagnostic Intelligence
 
-### An Explainable Machine Learning Framework for Breast Cancer Classification
+An educational machine-learning application for classifying Wisconsin Diagnostic Breast Cancer (WDBC) samples as benign (B) or malignant (M), using 30 numerical nuclear measurements.
 
-**Statistical Analysis | Predictive Modeling | Feature Engineering | Explainable AI**
+> **Research disclaimer:** ONCOLENS is an educational prototype, not a clinically validated diagnostic device. It must not be used to diagnose, rule out cancer, guide treatment, or replace professional medical evaluation.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.10-3776AB?logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/Pandas-Data%20Analysis-150458?logo=pandas&logoColor=white" />
-  <img src="https://img.shields.io/badge/Scikit--Learn-Machine%20Learning-F7931E?logo=scikitlearn&logoColor=white" />
-  <img src="https://img.shields.io/badge/NumPy-Scientific%20Computing-013243?logo=numpy&logoColor=white" />
-  <img src="https://img.shields.io/badge/Jupyter-Notebook-F37626?logo=jupyter&logoColor=white" />
-  <img src="https://img.shields.io/badge/Status-In%20Development-yellow" />
-</p>
+## Project overview
 
----
+The repository contains an end-to-end data science workflow:
+- Dataset validation and cleaning
+- Exploratory data analysis (EDA) and statistical investigation
+- Model experimentation and cross-validation
+- A saved scikit-learn Logistic Regression pipeline
+- Feature-importance outputs
+- A Streamlit interface for single-sample and batch predictions
 
-## 01. Project Overview
+## Dataset
 
-Breast Cancer Detection & Diagnostic Intelligence is a machine learning project focused on investigating diagnostic measurements and developing predictive models to distinguish between benign and malignant breast tumors.
+**Wisconsin Diagnostic Breast Cancer (WDBC)**
 
-The project follows a structured data science workflow, beginning with dataset validation and statistical investigation, followed by exploratory data analysis, feature engineering, predictive modeling and model interpretability.
-
-Rather than relying exclusively on classification accuracy, the framework emphasizes data quality, statistical relationships, feature redundancy, model reliability and the interpretation of predictive outcomes.
-
-The objective is to develop a reproducible and interpretable classification pipeline supported by rigorous analytical methodology.
-
-> **Research Disclaimer:** This project is intended for educational and research purposes. It is not a clinically validated diagnostic system and must not be used as a substitute for professional medical evaluation.
-
-## 02. Project Objectives
-
-- Establish a reproducible data validation pipeline.
-- Investigate diagnostic feature distributions and statistical characteristics.
-- Quantify differences between benign and malignant observations.
-- Identify multicollinearity and redundant predictors.
-- Investigate statistical outliers without automatically removing potentially meaningful observations.
-- Develop meaningful feature representations and selection strategies.
-- Experiment with multiple machine learning classification algorithms.
-- Evaluate predictive performance using appropriate classification metrics.
-- Apply explainability techniques to understand model decisions.
-- Develop an interactive interface for model inference.
-
-## 03. Dataset Overview
-
-**Dataset:** Wisconsin Diagnostic Breast Cancer (WDBC)
-
-The dataset contains measurements computed from digitized images of fine needle aspirates (FNA) of breast masses.
-
-| Dataset Attribute | Value |
+| Attribute | Value |
 |---|---:|
-| Total observations | 569 |
-| Predictor variables | 30 |
-| Target variable | Diagnosis |
-| Diagnostic classes | 2 |
-| Benign observations | 357 |
-| Malignant observations | 212 |
-| Missing values | 0 |
-| Duplicate observations | 0 |
-| Duplicate identifiers | 0 |
-
-### Diagnostic Class Distribution
-
-| Diagnosis | Count | Percentage |
-|---|---:|---:|
-| Benign (B) | 357 | 62.74% |
-| Malignant (M) | 212 | 37.26% |
-
-### Feature Structure
-
-The 30 numerical predictors are organized into three measurement categories:
-
-| Category | Description |
-|---|---|
-| Mean | Average characteristics of cell nuclei |
-| Standard Error | Measurement variability |
-| Worst | Largest or most extreme measurements |
-
-The measurements cover:
-
-- Radius
-- Texture
-- Perimeter
-- Area
-- Smoothness
-- Compactness
-- Concavity
-- Concave points
-- Symmetry
-- Fractal dimension
-
-## 04. Data Integrity & Validation
-
-Before statistical investigation, the dataset undergoes structural and integrity checks.
-
-The validation process includes:
-
-- Dataset dimensionality verification.
-- Removal of completely empty columns.
-- Missing-value assessment.
-- Duplicate observation detection.
-- Duplicate identifier detection.
-- Target class verification.
-- Data type inspection.
-- Predictor and target structure validation.
-
-### Validation Results
-
-| Integrity Check | Result |
-|---|---|
 | Observations | 569 |
 | Predictors | 30 |
-| Missing values | 0 |
-| Duplicate rows | 0 |
-| Duplicate identifiers | 0 |
-| Dataset validation | PASSED |
+| Target | diagnosis (B / M) |
+| Benign | 357 |
+| Malignant | 212 |
 
-The original dataset contained one completely empty column (`Unnamed: 32`), which was removed during cleaning.
+The 30 predictors describe mean, standard-error and worst measurements for radius, texture, perimeter, area, smoothness, compactness, concavity, concave points, symmetry and fractal dimension.
 
-The validated dataset was saved separately to preserve the distinction between raw and processed data.
-
-## 05. Exploratory Data Analysis
-
-Exploratory analysis investigates the statistical characteristics of diagnostic measurements and their relationships with the target variable.
-
-### Analysis Performed
-
-1. Dataset structure and descriptive statistics.
-2. Diagnostic class distribution.
-3. Feature distribution analysis.
-4. Benign versus malignant comparison.
-5. Spearman rank correlation analysis.
-6. Multicollinearity investigation.
-7. Inter-feature correlation ranking.
-8. Outlier detection using the Interquartile Range (IQR) method.
-
-### Key Analytical Findings
-
-**Diagnostic Feature Separation**
-
-Malignant observations exhibit higher average measurements across several geometric features.
-
-| Feature | Benign Mean | Malignant Mean |
-|---|---:|---:|
-| Radius Mean | 12.1465 | 17.4628 |
-| Texture Mean | 17.9148 | 21.6049 |
-| Perimeter Mean | 78.0754 | 115.3654 |
-| Area Mean | 462.7902 | 978.3764 |
-| Concavity Mean | 0.0461 | 0.1608 |
-| Concave Points Mean | 0.0257 | 0.0880 |
-
-The differences in concavity and concave points are particularly notable, suggesting that these measurements may contain useful discriminatory information.
-
-**Correlation Investigation**
-
-Spearman correlation analysis identified substantial relationships between several diagnostic predictors.
-
-| Feature Pair | Spearman Correlation |
-|---|---:|
-| radius_mean – area_mean | 0.9996 |
-| radius_worst – area_worst | 0.9989 |
-| radius_mean – perimeter_mean | 0.9978 |
-| perimeter_mean – area_mean | 0.9971 |
-| radius_worst – perimeter_worst | 0.9935 |
-| perimeter_worst – area_worst | 0.9924 |
-
-These relationships indicate considerable redundancy among certain geometric measurements. This will be considered during feature selection and model development.
-
-**Outlier Investigation**
-
-Potential outliers were identified using the IQR method.
-
-The investigation revealed that `area_se` had the highest flagged observation count, followed by `radius_se` and `perimeter_se`.
-
-Statistical outliers are not automatically treated as erroneous observations. Their influence will be assessed during subsequent preprocessing and model evaluation.
-
-### EDA Visualization Gallery
-
-The following visualizations are generated from the validated WDBC dataset.
-
-**01. Diagnostic Class Distribution**
-
-![Diagnostic Class Distribution](outputs/eda/class_distribution.png)
-
-Distribution of benign and malignant observations across the dataset.
-
-**02. Diagnostic Feature Comparison**
-
-![Diagnostic Feature Comparison](outputs/eda/feature_comparison.png)
-
-Boxplot comparison of six selected morphological measurements across diagnostic classes.
-
-**03. Feature Correlation Analysis**
-
-![Spearman Correlation Heatmap](outputs/eda/correlation_heatmap.png)
-
-Spearman correlation matrix illustrating relationships and potential redundancy among the 30 diagnostic predictors.
-
-**04. Feature Association with Diagnosis**
-
-![Feature Association](outputs/eda/feature_association.png)
-
-Top 15 diagnostic predictors ranked by absolute Spearman correlation with the binary target.
-
-**05. Outlier Investigation**
-
-![Outlier Analysis](outputs/eda/outlier_analysis.png)
-
-IQR-based screening of potential outliers across numerical diagnostic features.
-
-## 06. Project Architecture
+## Repository structure
 
 ```text
-Breast-Cancer-Detection-ML/
-│
+.
 ├── app/
-│   └──                 # Interactive application
-│
+│   └── streamlit_app.py
 ├── data/
 │   ├── raw/
 │   │   └── wdbc.csv
-│   │
 │   └── processed/
 │       └── wdbc_cleaned.csv
-│
 ├── models/
-│                         # Trained model artifacts
-│
+│   ├── breast_cancer_logistic_regression.joblib
+│   └── model_metadata.json
 ├── notebooks/
-│   └── 01_data_exploration.ipynb
-│
+│   ├── 01_data_exploration.ipynb
+│   └── 02_model_development.ipynb
 ├── outputs/
-│   └── eda/
-│       ├── class_distribution.png
-│       ├── correlation_heatmap.png
-│       ├── feature_association.png
-│       ├── feature_comparison.png
-│       └── outlier_analysis.png
-│
-├── reports/
-│                         # Analytical reports
-│
+│   ├── eda/
+│   └── model_evaluation/
 ├── src/
 │   └── validate_data.py
-│
-├── .gitignore
 ├── requirements.txt
+├── requirements-dev.txt
 └── README.md
 ```
 
-## 07. Technology Stack
+## Methodology
 
-| Area | Technologies |
-|---|---|
-| Programming | Python 3.10 |
-| Data Manipulation | Pandas, NumPy |
-| Statistical Analysis | SciPy |
-| Data Visualization | Matplotlib, Seaborn |
-| Machine Learning | Scikit-learn |
-| Model Persistence | Joblib |
-| Interactive Analysis | Jupyter Notebook |
-| Application Development | Streamlit |
-| Development Environment | VS Code |
-| Version Control | Git, GitHub |
+1. Validate the raw WDBC dataset and remove the fully empty source column.
+2. Explore class balance, feature distributions, correlations and potential outliers.
+3. Split data using a stratified train/test split.
+4. Compare classification algorithms using stratified cross-validation and tune selected candidates.
+5. Persist the selected preprocessing/model pipeline with Joblib.
+6. Use the Streamlit app for individual and CSV-based inference.
 
-## 08. Machine Learning Development Roadmap
+The saved application pipeline applies StandardScaler followed by Logistic Regression. The app uses the saved pipeline directly and does not retrain it.
 
-| Phase | Development Activity | Status |
-|---|---|---|
-| 01 | Environment and project setup | Completed |
-| 02 | Dataset acquisition and validation | Completed |
-| 03 | Exploratory data analysis | Completed |
-| 04 | Statistical investigation and outlier screening | Completed |
-| 05 | Feature engineering and preprocessing | Planned |
-| 06 | Model development and experimentation | Planned |
-| 07 | Model evaluation and comparison | Planned |
-| 08 | Explainable AI and model interpretation | Planned |
-| 09 | Interactive application development | Planned |
-| 10 | Deployment and final documentation | Planned |
+### Model evaluation — important limitation
 
-## 09. Model Evaluation Strategy
+The current notebook compares the tuned Logistic Regression and SVM candidates on the holdout test split and then selects Logistic Regression. Consequently, the holdout split has influenced model selection; its reported metrics should be treated as **exploratory estimates, not a fully untouched final generalisation estimate**. A rigorous final evaluation should select the model using training/validation cross-validation, lock the model and threshold, and evaluate once on a new untouched test set.
 
-Model development will consider multiple evaluation metrics to assess classification performance.
+The current reported Logistic Regression results on the existing split are:
+- Accuracy: 97.37%
+- Precision (malignant): 97.56%
+- Recall (malignant): 95.24%
+- Specificity: 98.61%
+- F1-score: 96.39%
+- ROC-AUC: 0.9964
 
-Planned evaluation metrics include:
+These values describe this dataset split only. They do not establish clinical performance or real-world diagnostic accuracy.
 
-- Accuracy
-- Precision
-- Recall (Sensitivity)
-- Specificity
-- F1-score
-- Confusion Matrix
-- ROC-AUC
+## Streamlit application
 
-Particular attention will be given to false-negative predictions because incorrectly classifying a malignant observation as benign is a critical error in this research context.
+The application includes:
+1. **Overview** — dataset and saved evaluation summary
+2. **Single-sample analysis** — enter all 30 measurements
+3. **Batch laboratory** — upload a CSV and download predictions
+4. **Explainability** — inspect saved coefficients and feature-importance outputs
+5. **Model & methodology** — model pipeline, decision threshold and metadata
 
-No model performance metrics are reported until model training and evaluation have been completed.
+### Batch CSV format
 
-## 10. Explainable AI
+Provide all 30 WDBC feature columns using their exact names. Optional columns are `id` and `diagnosis`. Diagnosis labels, when supplied, must be B/M or 0/1. Feature values must be numeric, finite and non-negative. Use the downloadable template in the Batch laboratory page as the column-name reference.
 
-Model interpretability will be investigated to understand how diagnostic measurements influence predictions.
+## Installation
 
-Planned techniques include:
-
-- Feature importance analysis.
-- SHAP-based feature contribution analysis.
-- Local prediction explanations.
-- Global model interpretation.
-
-These techniques will help examine the contribution of individual predictors and improve transparency in model behavior.
-
-## 11. Installation and Setup
-
-### Prerequisites
-
-- Python 3.10
-- Git
-- Visual Studio Code (recommended)
-
-### Clone the Repository
+Python 3.10 or newer is recommended. The saved model was serialized with scikit-learn 1.7.2; use the pinned runtime requirements to minimise version incompatibility.
 
 ```bash
-git clone https://github.com/nidhi-y
+git clone https://github.com/nidhi-yadav20799/Breast-Cancer-Detection-ML.git
+cd Breast-Cancer-Detection-ML
+
+python -m venv .venv
+# Windows:
+.venv\Scripts\activate
+# macOS / Linux:
+# source .venv/bin/activate
+
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+If the processed dataset is absent, place the original WDBC CSV at `data/raw/wdbc.csv` and run:
+
+```bash
+python src/validate_data.py
+```
+
+Start the application:
+
+```bash
+streamlit run app/streamlit_app.py
+```
+
+For notebook and EDA work, install the additional development dependencies:
+
+```bash
+pip install -r requirements-dev.txt
+```
+
+## Technology stack
+
+Python · Pandas · NumPy · Scikit-learn · Joblib · Matplotlib · Streamlit · Jupyter
+
+## Limitations and responsible use
+
+- The model is trained and evaluated on the WDBC dataset; performance may not generalise to other populations, devices, laboratories or clinical settings.
+- The application accepts measurements, not raw medical images.
+- Predictions are statistical model outputs, not diagnoses.
+- The dataset split used during development has influenced candidate selection; an independent final evaluation remains necessary.
+- Do not upload identifiable patient information to this educational prototype.
+
+## Project status
+
+Core dataset validation, EDA, model experimentation, saved model artefacts and the Streamlit prototype are implemented. Reproducible final evaluation, broader external validation, deployment hardening and clinical validation are not complete.
