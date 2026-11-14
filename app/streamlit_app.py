@@ -880,12 +880,18 @@ if page == "Overview":
         unsafe_allow_html=True,
     )
 
+    st.caption(
+        "Evaluation note: the holdout split was used to compare tuned candidate "
+        "models and select the final model. These scores are exploratory, not "
+        "an untouched independent final test estimate."
+    )
+
     cols = st.columns(4)
     cards = [
         ("REFERENCE COHORT", "569", "WDBC observations"),
         ("INPUT SPACE", "30", "Continuous nuclear features"),
-        ("HOLDOUT ACCURACY", "97.37%", "114 independent test observations"),
-        ("HOLDOUT ROC-AUC", "0.9964", "Independent test set"),
+        ("HOLDOUT ACCURACY", "97.37%", "114 holdout observations"),
+        ("HOLDOUT ROC-AUC", "0.9964", "Exploratory holdout estimate"),
     ]
 
     for col, (label, value, note) in zip(cols, cards):
@@ -895,7 +901,7 @@ if page == "Overview":
     left, right = st.columns([1.2, 1], gap="large")
 
     with left:
-        st.markdown("### Independent holdout performance")
+        st.markdown("### Exploratory holdout performance")
         performance = pd.DataFrame({
             "Metric": list(HOLDOUT_METRICS.keys()),
             "Score": list(HOLDOUT_METRICS.values()),
@@ -912,7 +918,7 @@ if page == "Overview":
         )
         ax.set_xlim(0, 1.08)
         ax.set_xlabel("Score", color="#b9cce0")
-        ax.set_title("Independent test performance", color="#edf6ff")
+        ax.set_title("Holdout performance (exploratory)", color="#edf6ff")
         ax.tick_params(colors="#dceafa")
         for bar, value in zip(bars, performance["Score"]):
             ax.text(
@@ -940,7 +946,7 @@ if page == "Overview":
         ax.set_yticks([0, 1], ["Benign", "Malignant"])
         ax.set_xlabel("Predicted class", color="#dceafa")
         ax.set_ylabel("Actual class", color="#dceafa")
-        ax.set_title("Independent test set", color="#edf6ff")
+        ax.set_title("Holdout confusion matrix", color="#edf6ff")
         for i in range(2):
             for j in range(2):
                 ax.text(
@@ -1327,7 +1333,7 @@ elif page == "Batch laboratory":
                     st.warning(
                         "These metrics describe the uploaded labelled file. "
                         "They are exploratory and are not the original "
-                        "independent holdout evaluation."
+                        "holdout evaluation."
                     )
 
                     metrics = {
@@ -1492,7 +1498,7 @@ elif page == "Model & methodology":
             language="text",
         )
 
-        st.markdown("### Independent holdout results")
+        st.markdown("### Exploratory holdout results")
         holdout = pd.DataFrame({
             "Metric": list(HOLDOUT_METRICS.keys()),
             "Score": [f"{v:.4f}" for v in HOLDOUT_METRICS.values()],
